@@ -8,7 +8,6 @@ dotenv.config();
 const app = express();
 
 const keycloakIssuer = await Issuer.discover(`${ process.env.KEYCLOAK_AUTH_SERVER_URL }/realms/car-track`);
-console.log('Discovered issuer %s %O', keycloakIssuer.issuer, keycloakIssuer.metadata);
 
 const client = new keycloakIssuer.Client({
     client_id: process.env.KEYCLOAK_RESOURCE,
@@ -22,7 +21,7 @@ const memoryStore = new expressSession.MemoryStore();
 
 app.use(
     expressSession({
-        secret: 'another_long_secret',
+        secret: process.env.SESSION_SECRET,
         resave: false,
         saveUninitialized: true,
         store: memoryStore,
