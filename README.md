@@ -29,6 +29,7 @@ yarn
 Configure the environment variables:
 
 ```dosini
+# SERVER CONFIG
 PORT= # PORT OF THE NODE JS SERVER
 SERVER_URL= # URL OF THE NODE JS SERVER
 
